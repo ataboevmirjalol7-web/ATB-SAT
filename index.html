@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAT System — 3 Oylik SAT & Kunlik Tizim</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="logo">
+                <span class="logo-icon">📚</span>
+                <div>
+                    <h1>SAT System</h1>
+                    <p class="subtitle">3 oylik SAT tayyorgarlik & kunlik tizim</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <nav class="tab-nav">
+                    <button class="tab-btn active" data-tab="daily" type="button">Kunlik Tizim</button>
+                    <button class="tab-btn" data-tab="plan" type="button">3 Oylik Reja</button>
+                    <button class="tab-btn" data-tab="rules" type="button">Qoidalar</button>
+                </nav>
+                <div class="header-date" id="today-date"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Kunlik Tizim -->
+    <div class="container tab-panel active" id="panel-daily">
+
+        <div class="main-column">
+            <div class="card">
+                <h2>SAT Kunlik Tizim Hajmi</h2>
+                <div class="volume-grid">
+                    <div class="volume-card volume-total">
+                        <div class="volume-val" id="total-goal">10 soat</div>
+                        <div class="volume-label">Kunlik jami</div>
+                    </div>
+                    <div class="volume-card volume-math">
+                        <div class="volume-val" id="math-goal">3 soat</div>
+                        <div class="volume-label">Math</div>
+                    </div>
+                    <div class="volume-card volume-reading">
+                        <div class="volume-val" id="reading-goal">3.5 soat</div>
+                        <div class="volume-label">Reading</div>
+                    </div>
+                    <div class="volume-card volume-writing">
+                        <div class="volume-val" id="writing-goal">1.5 soat</div>
+                        <div class="volume-label">Writing</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Kunlik Tizimli Vaqt Taqsimoti</h2>
+                <p class="hint">5 ta blok: Ertalab → SAT 1 → SAT 2 → SAT 3 → Kechqurun → Uyqu</p>
+                <div class="timeline" id="timeline-container"></div>
+            </div>
+        </div>
+
+        <aside class="sidebar">
+            <div class="card spiritual-card">
+                <h3>🕌 Kunlik Ibadat</h3>
+                <p class="hint">Har kuni bomdod namozi va 10 000 ta istig'for — baraka va fokus uchun.</p>
+
+                <label class="spiritual-item" id="fajr-item">
+                    <input type="checkbox" id="fajr-done">
+                    <div class="spiritual-text">
+                        <strong>Bomdod namozi o'qildi</strong>
+                        <span>5:45 dan oldin — kun boshlanishi</span>
+                    </div>
+                </label>
+
+                <div class="istighfar-block">
+                    <div class="istighfar-header">
+                        <strong>Istig'for — 10 000 marta</strong>
+                        <span id="istighfar-count">0 / 10 000</span>
+                    </div>
+                    <div class="progress-bar istighfar-bar">
+                        <div class="progress-fill istighfar-fill" id="istighfar-fill"></div>
+                    </div>
+                    <div class="istighfar-buttons">
+                        <button type="button" class="btn btn-small" data-add="100">+100</button>
+                        <button type="button" class="btn btn-small" data-add="500">+500</button>
+                        <button type="button" class="btn btn-small" data-add="1000">+1000</button>
+                        <button type="button" class="btn btn-small btn-reset" id="istighfar-reset">Tozalash</button>
+                    </div>
+                    <label class="spiritual-item istighfar-done-row" id="istighfar-item">
+                        <input type="checkbox" id="istighfar-done">
+                        <div class="spiritual-text">
+                            <strong>10 000 ta istig'for aytilgan</strong>
+                            <span>Maqsadga yetganda belgilang</span>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="spiritual-summary" id="spiritual-summary">Bugun: 0 / 2 bajarildi</div>
+            </div>
+
+            <div class="card rule-card rule-card-iron sidebar-rule">
+                <h3><span class="rule-dot dot-red"></span> Og'ishmaslik uchun Temir Qoidalar</h3>
+                <ul class="rule-list rule-list-colored">
+                    <li><span class="rule-dot dot-red"></span>Har kuni bir xil vaqtda tur — shanba va yakshanba ham 5:45 da.</li>
+                    <li><span class="rule-dot dot-red"></span>Telefon SAT vaqtida boshqa xonada bo'lsin. Ko'rinmasa chalg'imaysan.</li>
+                    <li><span class="rule-dot dot-red"></span>Dam olishni o'tkazib yuborma — bu vaqt yo'qotish emas, unumdorlik.</li>
+                    <li><span class="rule-dot dot-red"></span>Kofe 14:00 dan keyin yo'q — uyqu sifatini buzadi.</li>
+                    <li><span class="rule-dot dot-red"></span>21:30 da albatta uxlashga yot — miya tiklanishi shart!</li>
+                </ul>
+            </div>
+
+            <div class="card rule-card rule-card-blue sidebar-rule">
+                <h3><span class="rule-dot dot-blue"></span> Konsentratsiya uchun muhit</h3>
+                <ul class="rule-list rule-list-colored">
+                    <li><span class="rule-dot dot-blue"></span><strong>Xona tartibli, stol toza</strong> — tartibsiz muhit miya energiyasini sarflaydi.</li>
+                    <li><span class="rule-dot dot-blue"></span><strong>Fon shovqini bo'lsa</strong> — quloqchin yoki fokus musiqasi (brown noise, jazz, lo-fi).</li>
+                    <li><span class="rule-dot dot-blue"></span><strong>Xona harorati 20–22°C</strong> — issiq xona uyquchanlik keltiradi.</li>
+                    <li><span class="rule-dot dot-blue"></span><strong>Suv stolda bo'lsin</strong> — chanqab qolish konsentratsiyani 20% pasaytiradi.</li>
+                </ul>
+            </div>
+
+            <div class="card rule-card rule-card-green sidebar-rule">
+                <h3><span class="rule-dot dot-green"></span> Ruhiy barqarorlik</h3>
+                <ul class="rule-list rule-list-colored">
+                    <li><span class="rule-dot dot-green"></span><strong>Yomon kun bo'lsa</strong> — normal. Bir kuni o'tkazib yuborma, ertasi davom et.</li>
+                    <li><span class="rule-dot dot-green"></span><strong>Score pasaysa</strong> — vahima emas. Tahlil qil: nima sababdan?</li>
+                    <li><span class="rule-dot dot-green"></span><strong>Har hafta o'sishni kuzat</strong> — kichik o'sish ham g'alaba.</li>
+                    <li><span class="rule-dot dot-green"></span><strong>Erkin vaqtni qo'shimcha dars bilan to'ldirma</strong> — miya charchaydi.</li>
+                </ul>
+            </div>
+
+            <div class="card rule-card rule-card-orange sidebar-rule">
+                <h3><span class="rule-dot dot-orange"></span> Ovqat va energiya</h3>
+                <ul class="rule-list rule-list-colored">
+                    <li><span class="rule-dot dot-orange"></span><strong>Kuniga 2 litr suv</strong> — dehidratatsiya konsentratsiyani yo'q qiladi.</li>
+                    <li><span class="rule-dot dot-orange"></span><strong>Nonushtani o'tkazma</strong> — miya glyukozasiz 3 soat ishlay olmaydi.</li>
+                    <li><span class="rule-dot dot-orange"></span><strong>Shirinlik va gazlangan ichimlik</strong> — qisqa energiya, keyin tushish. Yo'q.</li>
+                    <li><span class="rule-dot dot-orange"></span><strong>Meva, yong'oq, tuxum, sabzavot</strong> — sifatli, uzoq davom etuvchi energiya.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>🎧 Fokus musiqasi</h3>
+                <p class="hint">Konsentratsiya uchun brown noise, jazz piano yoki lo-fi tanlang.</p>
+                <label for="sound-select" class="sound-label">Ovoz turi</label>
+                <select id="sound-select" class="error-input sound-select">
+                    <option value="brown">Brown Noise</option>
+                    <option value="jazz">Jazz Piano</option>
+                    <option value="lofi">Lo-fi Chill</option>
+                </select>
+                <div class="audio-control">
+                    <span id="sound-name">Brown Noise</span>
+                    <button class="btn" id="audio-btn" type="button">Yoqish</button>
+                </div>
+                <div class="volume-control">
+                    <label for="volume-slider">Ovoz balandligi</label>
+                    <input type="range" id="volume-slider" min="0" max="100" value="40">
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>📝 Tezkor Xatolar Daftari</h3>
+                <p class="hint">Bugun yo'l qo'ygan xatongizni va uning sababini unutmang.</p>
+                <input type="text" class="error-input" id="error-task" placeholder="Masalan: Reading Inference Q.5 xato">
+                <textarea class="error-input" id="error-reason" rows="2" placeholder="Nima sababdan xato qildingiz? (Masalan: Matndagi kalit so'zga e'tibor bermadim)"></textarea>
+                <button class="btn btn-green" id="save-error-btn" type="button">Xatoni Saqlash</button>
+                <div id="error-list" class="error-list"></div>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- 3 Oylik Reja -->
+    <div class="container plan-container tab-panel" id="panel-plan">
+
+        <div class="plan-main">
+            <div class="card">
+                <div class="plan-header-row">
+                    <div>
+                        <h2>3 Oylik SAT Rejasi</h2>
+                        <p class="hint">Maqsad: <strong id="target-score">1500</strong> ball · 12 hafta · 6 ta mock test</p>
+                    </div>
+                    <div class="start-date-picker">
+                        <label for="plan-start-date">Boshlash sanasi</label>
+                        <input type="date" id="plan-start-date" class="error-input date-input">
+                    </div>
+                </div>
+
+                <div id="plan-status"></div>
+
+                <div class="overall-progress" style="margin-top: 16px;">
+                    <div class="progress-label">
+                        <span>Umumiy progress</span>
+                        <span id="plan-progress-label">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="plan-progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>3 Bosqich</h2>
+                <div class="phases-grid" id="phases-grid"></div>
+            </div>
+
+            <div class="card">
+                <h2>12 Haftalik Reja</h2>
+                <p class="hint">Har bir vazifani bajarganingizda belgilang. Mock test natijalarini yozing.</p>
+                <div id="weeks-container"></div>
+            </div>
+        </div>
+
+        <aside class="sidebar">
+            <div class="card">
+                <h3>📊 Mock Test Jadvali</h3>
+                <ul class="mock-schedule">
+                    <li><span class="mock-week">Hafta 4</span> Partial mock — 650+ maqsad</li>
+                    <li><span class="mock-week">Hafta 7</span> To'liq mock #1 — 1380–1420</li>
+                    <li><span class="mock-week">Hafta 8</span> Zaif bo'lim mock — +50 ball</li>
+                    <li><span class="mock-week">Hafta 9</span> To'liq mock #2 — 1450–1480</li>
+                    <li><span class="mock-week">Hafta 11</span> Yakuniy mock #3 — 1480–1520</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>🎯 Ball Maqsadlari</h3>
+                <div class="score-targets">
+                    <div class="score-row">
+                        <span>1-oy oxirida</span>
+                        <strong>1350</strong>
+                    </div>
+                    <div class="score-row">
+                        <span>2-oy oxirida</span>
+                        <strong>1450</strong>
+                    </div>
+                    <div class="score-row highlight">
+                        <span>Imtihon kuni</span>
+                        <strong>1500+</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>📖 Resurslar</h3>
+                <ul class="rule-list resource-list">
+                    <li>Khan Academy — SAT Digital mashqlar</li>
+                    <li>Bluebook app — rasmiy mock testlar</li>
+                    <li>Anki — SAT vocabulary deck</li>
+                    <li>Desmos — calculator strategiyalari</li>
+                    <li>NY Times / The Atlantic — reading</li>
+                </ul>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- Qoidalar -->
+    <div class="rules-page tab-panel" id="panel-rules">
+        <div class="rules-page-inner">
+            <div class="card rules-intro">
+                <h2>🚫 Og'ishmaslik uchun Qoidalar</h2>
+                <p class="hint">SAT tayyorgarligida muvaffaqiyat faqat bilim emas — tartib, muhit va ruhiy barqarorlik ham muhim. Har kuni bu qoidalarga amal qiling.</p>
+            </div>
+
+            <div class="rules-grid">
+                <div class="card rule-card rule-card-iron">
+                    <h3><span class="rule-dot dot-red"></span> Temir Qoidalar</h3>
+                    <ul class="rule-list rule-list-colored">
+                        <li><span class="rule-dot dot-red"></span>Har kuni bir xil vaqtda tur — shanba va yakshanba ham 5:45 da.</li>
+                        <li><span class="rule-dot dot-red"></span>Telefon SAT vaqtida boshqa xonada bo'lsin. Ko'rinmasa chalg'imaysan.</li>
+                        <li><span class="rule-dot dot-red"></span>Dam olishni o'tkazib yuborma — bu vaqt yo'qotish emas, unumdorlik.</li>
+                        <li><span class="rule-dot dot-red"></span>Kofe 14:00 dan keyin yo'q — uyqu sifatini buzadi.</li>
+                        <li><span class="rule-dot dot-red"></span>21:30 da albatta uxlashga yot — miya tiklanishi shart!</li>
+                    </ul>
+                </div>
+
+                <div class="card rule-card rule-card-blue">
+                    <h3><span class="rule-dot dot-blue"></span> Konsentratsiya uchun muhit</h3>
+                    <ul class="rule-list rule-list-colored">
+                        <li><span class="rule-dot dot-blue"></span><strong>Xona tartibli, stol toza</strong> — tartibsiz muhit miya energiyasini sarflaydi.</li>
+                        <li><span class="rule-dot dot-blue"></span><strong>Fon shovqini bo'lsa</strong> — quloqchin yoki fokus musiqasi (brown noise, jazz, lo-fi).</li>
+                        <li><span class="rule-dot dot-blue"></span><strong>Xona harorati 20–22°C</strong> — issiq xona uyquchanlik keltiradi.</li>
+                        <li><span class="rule-dot dot-blue"></span><strong>Suv stolda bo'lsin</strong> — chanqab qolish konsentratsiyani 20% pasaytiradi.</li>
+                    </ul>
+                </div>
+
+                <div class="card rule-card rule-card-green">
+                    <h3><span class="rule-dot dot-green"></span> Ruhiy barqarorlik</h3>
+                    <ul class="rule-list rule-list-colored">
+                        <li><span class="rule-dot dot-green"></span><strong>Yomon kun bo'lsa</strong> — normal. Bir kuni o'tkazib yuborma, ertasi davom et.</li>
+                        <li><span class="rule-dot dot-green"></span><strong>Score pasaysa</strong> — vahima emas. Tahlil qil: nima sababdan?</li>
+                        <li><span class="rule-dot dot-green"></span><strong>Har hafta o'sishni kuzat</strong> — kichik o'sish ham g'alaba.</li>
+                        <li><span class="rule-dot dot-green"></span><strong>Erkin vaqtni qo'shimcha dars bilan to'ldirma</strong> — miya charchaydi.</li>
+                    </ul>
+                </div>
+
+                <div class="card rule-card rule-card-orange">
+                    <h3><span class="rule-dot dot-orange"></span> Ovqat va energiya</h3>
+                    <ul class="rule-list rule-list-colored">
+                        <li><span class="rule-dot dot-orange"></span><strong>Kuniga 2 litr suv</strong> — dehidratatsiya konsentratsiyani yo'q qiladi.</li>
+                        <li><span class="rule-dot dot-orange"></span><strong>Nonushtani o'tkazma</strong> — miya glyukozasiz 3 soat ishlay olmaydi.</li>
+                        <li><span class="rule-dot dot-orange"></span><strong>Shirinlik va gazlangan ichimlik</strong> — qisqa energiya, keyin tushish. Yo'q.</li>
+                        <li><span class="rule-dot dot-orange"></span><strong>Meva, yong'oq, tuxum, sabzavot</strong> — sifatli, uzoq davom etuvchi energiya.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="plan.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
